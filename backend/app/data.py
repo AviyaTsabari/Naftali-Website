@@ -1,4 +1,9 @@
-from app.schemas import Poem, Product
+from pathlib import Path
+
+from app.poems import load_poems_from_file
+from app.schemas import Product
+
+POEMS_FILE = Path(__file__).resolve().parent / "data" / "poems.txt"
 
 MOCK_PRODUCTS: list[Product] = [
     Product(
@@ -63,25 +68,6 @@ MOCK_PRODUCTS: list[Product] = [
     ),
 ]
 
-MOCK_POEMS: list[Poem] = [
-    Poem(
-        id="poem-2024-03-12",
-        date="2024-03-12",
-        title="",
-        body="טקסט לדוגמה בלבד. השיר המלא יפורסם כאן.",
-    ),
-    Poem(
-        id="poem-2024-07-01",
-        date="2024-07-01",
-        title="",
-        body="טקסט לדוגמה בלבד. השיר המלא יפורסם כאן.",
-    ),
-    Poem(
-        id="poem-2025-01-20",
-        date="2025-01-20",
-        title="",
-        body="טקסט לדוגמה בלבד. השיר המלא יפורסם כאן.",
-    ),
-]
+MOCK_POEMS = load_poems_from_file(POEMS_FILE)
 
 CATEGORIES = ("mezuzahs", "hanukkiahs", "furniture")

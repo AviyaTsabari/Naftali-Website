@@ -27,6 +27,8 @@
       <p class="subtotal">סכום ביניים לדוגמה · {{ cart.subtotal() }}</p>
     }
 
+    <a class="shop-link" routerLink="/shop" (click)="cart.close()">המשיכו לחנות</a>
+
     <p class="soon">התשלום יתאפשר בקרוב</p>
     <button type="button" class="checkout" disabled>המשך לתשלום</button>
   </aside>

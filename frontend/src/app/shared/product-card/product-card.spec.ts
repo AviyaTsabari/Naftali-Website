@@ -43,4 +43,19 @@ describe('ProductCard', () => {
     fixture.nativeElement.querySelector('.add').click();
     expect(fixture.componentInstance.added).toBeTrue();
   });
+
+  it('disables add when the product is already in the cart', () => {
+    TestBed.configureTestingModule({
+      imports: [Host],
+    });
+    const fixture = TestBed.createComponent(Host);
+    fixture.componentInstance.inCart = true;
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('.add') as HTMLButtonElement;
+
+    expect(button.disabled).toBeTrue();
+    expect(button.textContent).toContain('בעגלה');
+    button.click();
+    expect(fixture.componentInstance.added).toBeFalse();
+  });
 });

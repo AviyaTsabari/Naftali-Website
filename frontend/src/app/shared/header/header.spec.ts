@@ -1,7 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { Product } from '../../models/product';
 import { Cart } from '../../services/cart';
 import { Header } from './header';
+
+const sample: Product = {
+  id: 'prod-tamar',
+  name: 'דגם תמר',
+  category: 'mezuzahs',
+  price: 100,
+  currency: null,
+  image: null,
+  description: '',
+  available: true,
+};
 
 describe('Header', () => {
   beforeEach(async () => {
@@ -30,6 +42,16 @@ describe('Header', () => {
     const count = fixture.nativeElement.querySelector('.cart-count');
 
     expect(count?.textContent?.trim()).toBe('0');
+  });
+
+  it('updates the cart count after a product is added', () => {
+    const fixture = TestBed.createComponent(Header);
+    fixture.detectChanges();
+
+    TestBed.inject(Cart).add(sample);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.cart-count')?.textContent?.trim()).toBe('1');
   });
 
   it('opens the cart preview', () => {

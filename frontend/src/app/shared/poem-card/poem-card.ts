@@ -12,7 +12,7 @@ export class PoemCard {
   readonly poem = input.required<Poem>();
 
   excerpt(): string {
-    const body = this.poem().body.trim();
-    return body.length > 72 ? `${body.slice(0, 72)}…` : body;
+    const firstParagraph = this.poem().body.trim().split(/\n\s*\n/)[0].replace(/\n/g, ' ');
+    return firstParagraph.length > 72 ? `${firstParagraph.slice(0, 72)}…` : firstParagraph;
   }
 }

@@ -49,4 +49,22 @@ describe('Cart', () => {
     expect(restored.itemCount()).toBe(1);
     expect(restored.list()[0].productId).toBe('prod-tamar');
   });
+
+  it('does not add an unavailable product', () => {
+    expect(cart.add({ ...sample, available: false })).toBeFalse();
+    expect(cart.itemCount()).toBe(0);
+  });
+
+  it('keeps quantity at one and stores only cart item fields', () => {
+    cart.add(sample);
+    cart.setQuantity(sample.id, 2);
+
+    expect(cart.itemCount()).toBe(1);
+    expect(cart.list()[0]).toEqual({
+      productId: 'prod-tamar',
+      productName: 'דגם תמר',
+      price: 100,
+    });
+  });
 });
+

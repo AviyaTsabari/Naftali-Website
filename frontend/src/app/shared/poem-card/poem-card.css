@@ -17,6 +17,10 @@
   color: var(--color-stone);
 }
 
+.date {
+  font-size: 0.9rem;
+}
+
 .card a {
   color: var(--color-walnut);
   border-block-end: 1px solid var(--color-bronze);

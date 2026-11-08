@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { Product } from '../../models/product';
 import { Cart } from '../../services/cart';
 import { CartPreview } from './cart-preview';
@@ -21,7 +22,7 @@ describe('CartPreview', () => {
     localStorage.clear();
     await TestBed.configureTestingModule({
       imports: [CartPreview],
-      providers: [Cart],
+      providers: [Cart, provideRouter([])],
     }).compileComponents();
 
     cart = TestBed.inject(Cart);
@@ -41,6 +42,7 @@ describe('CartPreview', () => {
 
     expect(fixture.nativeElement.querySelector('[role="dialog"]')).toBeTruthy();
     expect(fixture.nativeElement.textContent).toContain('העגלה ריקה');
+    expect(fixture.nativeElement.textContent).toContain('המשיכו לחנות');
     expect(fixture.nativeElement.textContent).toContain('התשלום יתאפשר בקרוב');
   });
 
@@ -50,7 +52,10 @@ describe('CartPreview', () => {
     fixture.detectChanges();
 
     expect(fixture.nativeElement.textContent).toContain('דגם תמר');
-    expect(fixture.nativeElement.textContent).toContain('סכום ביניים לדוגמה');
+    expect(fixture.nativeElement.textContent).toContain('כמות: 1');
+    expect(fixture.nativeElement.textContent).toContain('סכום ביניים לדוגמה · 100');
+    expect(fixture.nativeElement.querySelector('.checkout')?.disabled).toBeTrue();
+    expect(fixture.nativeElement.querySelector('input')).toBeNull();
     fixture.nativeElement.querySelector('.qty button').click();
     fixture.detectChanges();
     expect(cart.itemCount()).toBe(0);

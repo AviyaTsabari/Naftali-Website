@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SHOP_CATEGORIES } from '../../models/product';
+import { Product, SHOP_CATEGORIES } from '../../models/product';
+import { Cart } from '../../services/cart';
+import { Catalog } from '../../services/catalog';
+import { ProductCard } from '../../shared/product-card/product-card';
 
 @Component({
   selector: 'app-shop',
-  imports: [RouterLink],
+  imports: [RouterLink, ProductCard],
   templateUrl: './shop.html',
   styleUrl: './page.css',
 })
-export class ShopPage {
+export class ShopPage implements OnInit {
+  private readonly catalog = inject(Catalog);
+  protected readonly cart = inject(Cart);
   protected readonly categories = SHOP_CATEGORIES;
+  protected readonly products = signal<Product[]>([]);
+  protected readonly error = signal<string | null>(null);
+
+  ngOnInit(): void {
+    this.catalog.listProducts().subscribe({
+      next: (items) => this.products.set(items),
+      error: (err: Error) => this.error.set(err.message),
+    });
+  }
 }

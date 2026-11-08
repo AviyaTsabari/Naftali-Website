@@ -6,13 +6,19 @@
 }
 
 h1 {
+  margin: 0 0 0.5rem;
+}
+
+.date {
   margin: 0 0 1rem;
+  color: var(--color-stone);
 }
 
 .body,
 .error {
   margin: 0;
   max-width: 38rem;
+  white-space: pre-wrap;
 }
 
 .error {

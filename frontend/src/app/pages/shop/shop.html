@@ -6,4 +6,18 @@
       <a [routerLink]="['/shop', category.id]">{{ category.label }}</a>
     }
   </nav>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else {
+    <div class="grid">
+      @for (product of products(); track product.id) {
+        <app-product-card
+          [product]="product"
+          [inCart]="cart.has(product.id)"
+          (add)="cart.add(product)"
+        />
+      }
+    </div>
+  }
 </section>

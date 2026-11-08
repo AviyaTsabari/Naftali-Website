@@ -33,10 +33,10 @@ describe('HomePage', () => {
     ]);
     http.expectOne(`${API_URL}/poems`).flush([
       {
-        id: 'poem-2024-03-12',
-        date: '2024-03-12',
-        title: '',
-        body: 'טקסט לדוגמה בלבד. השיר המלא יפורסם כאן.',
+        id: 'poem-2025-03-20',
+        date: '2025-03-20',
+        title: 'כֹּתֶרֶת',
+        body: 'שׁוּרָה רִאשׁוֹנָה של השיר.',
       },
     ]);
     fixture.detectChanges();
@@ -51,7 +51,7 @@ describe('HomePage', () => {
     expect(text).toContain('עוזר הסטודיו — בקרוב');
     expect(text).toContain('אין מענה אוטומטי בשלב זה');
     expect(text).toContain('דגם תמר');
-    expect(text).toContain('2024-03-12');
+    expect(text).toContain('כֹּתֶרֶת');
     expect(fixture.nativeElement.querySelector('input')).toBeNull();
     http.verify();
   });

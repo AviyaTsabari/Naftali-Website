@@ -1,13 +1,17 @@
 <article class="card">
   <app-product-image [src]="product().image" [alt]="product().name" />
-  <h3>{{ product().name }}</h3>
-  <p class="price">מחיר לדוגמה · {{ product().price }}</p>
-  <button
-    type="button"
-    class="add"
-    [disabled]="!product().available || inCart()"
-    (click)="add.emit()"
-  >
-    {{ inCart() ? 'בעגלה' : 'הוספה לעגלה' }}
-  </button>
+  <div class="details">
+    <div class="copy">
+      <h3>{{ product().name }}</h3>
+      <p class="price">מחיר לדוגמה · {{ product().price }}</p>
+    </div>
+    <button
+      type="button"
+      class="add"
+      [disabled]="!product().available || inCart()"
+      (click)="add.emit()"
+    >
+      {{ inCart() ? 'בעגלה' : '+ הוספה לעגלה' }}
+    </button>
+  </div>
 </article>

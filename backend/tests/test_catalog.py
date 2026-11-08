@@ -52,7 +52,9 @@ def test_list_and_get_poems() -> None:
 
     assert listing.status_code == 200
     assert len(listing.json()) == len(MOCK_POEMS)
+    assert listing.json()[0]["id"] == MOCK_POEMS[0].id
+    assert listing.json()[0]["title"] == MOCK_POEMS[0].title
     assert listing.json()[0]["date"] == MOCK_POEMS[0].date
-    assert "טקסט לדוגמה" in one.json()["body"]
+    assert one.json()["body"] == MOCK_POEMS[0].body
     assert missing.status_code == 404
     assert missing.json() == {"detail": "Poem not found"}

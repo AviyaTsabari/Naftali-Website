@@ -17,11 +17,13 @@ def test_shop_has_three_categories_and_example_product() -> None:
     assert len(MOCK_PRODUCTS) == 6
 
 
-def test_poems_are_labeled_mock_placeholders() -> None:
+def test_poems_have_titles_dates_and_bodies() -> None:
     payload = client.get("/poems").json()
 
     assert payload
     assert len(payload) == len(MOCK_POEMS)
     for poem in payload:
+        assert poem["id"]
         assert poem["date"]
-        assert "טקסט לדוגמה" in poem["body"]
+        assert poem["title"]
+        assert poem["body"]

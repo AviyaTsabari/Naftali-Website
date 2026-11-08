@@ -17,18 +17,18 @@ describe('PoetryPage', () => {
     const http = TestBed.inject(HttpTestingController);
     http.expectOne(`${API_URL}/poems`).flush([
       {
-        id: 'poem-2024-03-12',
-        date: '2024-03-12',
-        title: '',
-        body: 'טקסט לדוגמה בלבד. השיר המלא יפורסם כאן.',
+        id: 'poem-2025-03-20',
+        date: '2025-03-20',
+        title: 'כֹּתֶרֶת',
+        body: 'שׁוּרָה רִאשׁוֹנָה של השיר.',
       },
     ]);
     fixture.detectChanges();
 
     const text = fixture.nativeElement.textContent as string;
     expect(fixture.nativeElement.querySelector('h1')?.textContent).toContain('שירה');
-    expect(text).toContain('2024-03-12');
-    expect(text).toContain('הטקסטים כאן הם דוגמה בלבד, ולא שירים של נפתלי');
+    expect(text).toContain('כֹּתֶרֶת');
+    expect(text).toContain('2025-03-20');
     expect(text).toContain('לשיר המלא');
     expect(text).toContain('ניוזלטר בוואטסאפ — בקרוב');
     expect(text).toContain('לא נאסף מספר טלפון בשלב זה');
