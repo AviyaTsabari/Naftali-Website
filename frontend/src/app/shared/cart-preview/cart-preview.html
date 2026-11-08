@@ -1,0 +1,11 @@
+@if (cart.isOpen()) {
+  <div class="backdrop" (click)="cart.close()"></div>
+  <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="panel-header">
+      <h2 id="cart-title">עגלת קניות</h2>
+      <button type="button" class="close" (click)="cart.close()" aria-label="סגירה">×</button>
+    </div>
+    <p class="empty">העגלה ריקה</p>
+    <p class="soon">התשלום יתאפשר בקרוב</p>
+  </aside>
+}

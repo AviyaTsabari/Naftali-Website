@@ -1,0 +1,57 @@
+:root {
+  --color-ivory: #f6f1e8;
+  --color-parchment: #efe6d6;
+  --color-walnut: #4a3224;
+  --color-charcoal: #2c2a28;
+  --color-stone: #8a8680;
+  --color-bronze: #9c7a4a;
+  --color-surface: #fbf8f3;
+  --shadow-soft: 0 12px 32px rgb(44 42 40 / 12%);
+  --font-body: "Segoe UI", "Arial Hebrew", "David", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-walnut);
+}

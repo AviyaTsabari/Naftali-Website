@@ -1,0 +1,18 @@
+.footer {
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+  text-align: center;
+  background: var(--color-walnut);
+  color: var(--color-parchment);
+}
+
+.name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.note {
+  margin: 0.35rem 0 0;
+  color: var(--color-ivory);
+  opacity: 0.85;
+}

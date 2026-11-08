@@ -1,0 +1,26 @@
+<header class="header">
+  <a routerLink="/" class="brand">סטודיו נפתלי</a>
+
+  <nav class="nav" aria-label="ניווט ראשי">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">בית</a>
+    <a routerLink="/poetry" routerLinkActive="active">שירה</a>
+    <a routerLink="/shop" routerLinkActive="active">חנות</a>
+    <a routerLink="/contact" routerLinkActive="active">יצירת קשר</a>
+  </nav>
+
+  <div class="actions">
+    <button type="button" class="cart-button" (click)="cart.toggle()" aria-label="עגלת קניות">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M7 18a2 2 0 1 0 .01 4A2 2 0 0 0 7 18Zm10 0a2 2 0 1 0 .01 4A2 2 0 0 0 17 18ZM3 3h2.2l.48 2h13.47a1 1 0 0 1 .98 1.2l-1.2 6A2 2 0 0 1 16.97 14H8.24l-.4 2H19v2H6.3a1 1 0 0 1-.98-1.2L6.7 12.4 4.2 5H3V3Z"
+        />
+      </svg>
+      <span class="cart-count">{{ cart.itemCount() }}</span>
+    </button>
+    <button type="button" class="login-button" (click)="openLogin()">כניסה</button>
+  </div>
+</header>
+
+<app-cart-preview />
+<app-login-preview [open]="loginOpen()" (closed)="closeLogin()" />
