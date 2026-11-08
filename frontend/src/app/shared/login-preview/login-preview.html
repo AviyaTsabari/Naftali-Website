@@ -3,18 +3,14 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
     <div class="modal-header">
       <h2 id="login-title">כניסה</h2>
-      <button type="button" class="close" (click)="close()" aria-label="סגירה">×</button>
+      <button type="button" class="close" (click)="close()" aria-label="סגירה" autofocus>×</button>
     </div>
     <p class="soon">תצוגה מקדימה — הכניסה תתאפשר בקרוב</p>
     <form (submit)="$event.preventDefault()">
-      <label>
-        דוא״ל
-        <input type="email" name="email" autocomplete="off" disabled />
-      </label>
-      <label>
-        סיסמה
-        <input type="password" name="password" autocomplete="off" disabled />
-      </label>
+      <label for="login-email">דוא״ל</label>
+      <input id="login-email" type="email" name="email" autocomplete="off" disabled />
+      <label for="login-password">סיסמה</label>
+      <input id="login-password" type="password" name="password" autocomplete="off" disabled />
       <button type="button" disabled>כניסה</button>
     </form>
   </div>

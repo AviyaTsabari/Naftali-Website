@@ -3,7 +3,7 @@
   <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
     <div class="panel-header">
       <h2 id="cart-title">עגלת קניות</h2>
-      <button type="button" class="close" (click)="cart.close()" aria-label="סגירה">×</button>
+      <button type="button" class="close" (click)="cart.close()" aria-label="סגירה" autofocus>×</button>
     </div>
 
     @if (cart.list().length === 0) {

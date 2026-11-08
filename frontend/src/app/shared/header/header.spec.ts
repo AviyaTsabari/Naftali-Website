@@ -54,6 +54,23 @@ describe('Header', () => {
     expect(fixture.nativeElement.querySelector('.cart-count')?.textContent?.trim()).toBe('1');
   });
 
+  it('closes open dialogs when Escape is pressed', () => {
+    const fixture = TestBed.createComponent(Header);
+    const cart = TestBed.inject(Cart);
+    fixture.detectChanges();
+
+    cart.open();
+    fixture.componentInstance.openLogin();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('[role="dialog"]')).toBeTruthy();
+
+    fixture.componentInstance.onEscape();
+    fixture.detectChanges();
+
+    expect(cart.isOpen()).toBeFalse();
+    expect(fixture.nativeElement.querySelector('[role="dialog"]')).toBeNull();
+  });
+
   it('opens the cart preview', () => {
     const fixture = TestBed.createComponent(Header);
     fixture.detectChanges();

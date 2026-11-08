@@ -4,6 +4,8 @@
 
   @if (error()) {
     <p class="error">{{ error() }}</p>
+  } @else if (loading()) {
+    <p class="status" aria-live="polite">טוען מוצרים…</p>
   } @else {
     <p>המחירים והתיאורים הם נתוני דוגמה עד שיסופקו פרטים אמיתיים.</p>
     <div class="grid">

@@ -13,6 +13,7 @@ describe('PoetryPage', () => {
     });
     const fixture = TestBed.createComponent(PoetryPage);
     fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('טוען שירים');
 
     const http = TestBed.inject(HttpTestingController);
     http.expectOne(`${API_URL}/poems`).flush([

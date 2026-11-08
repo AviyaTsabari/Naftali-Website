@@ -1,5 +1,7 @@
 h1 {
   margin: 0 0 0.75rem;
+  font-size: clamp(2.1rem, 4vw, 2.75rem);
+  animation: rise-in 0.55s var(--ease-out);
 }
 
 p {
@@ -10,24 +12,55 @@ p {
 .categories,
 .grid {
   display: grid;
-  gap: 1rem;
-  margin-block-start: 1.5rem;
+  gap: 1.15rem;
+  margin-block-start: 1.6rem;
 }
 
 .categories {
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  animation: rise-in 0.65s var(--ease-out) 0.05s both;
 }
 
 .categories a {
-  padding: 1.25rem 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.55rem 1rem;
   text-align: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-walnut);
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--radius-soft);
   color: var(--color-walnut);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: var(--glass-edge), var(--shadow-soft);
+  backdrop-filter: blur(14px) saturate(135%);
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+}
+
+.categories a::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 45%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 45%), transparent);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.categories a:hover {
+  transform: translateY(-4px);
+  border-color: rgb(156 122 74 / 45%);
+  box-shadow: var(--glass-edge), var(--shadow-lift);
 }
 
 .grid {
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  animation: rise-in 0.7s var(--ease-out) 0.1s both;
 }
 
 .error,
@@ -39,4 +72,5 @@ p {
   display: inline-block;
   color: var(--color-walnut);
   border-block-end: 1px solid var(--color-bronze);
+  font-weight: 500;
 }

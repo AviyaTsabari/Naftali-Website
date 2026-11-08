@@ -9,7 +9,13 @@
   </nav>
 
   <div class="actions">
-    <button type="button" class="cart-button" (click)="cart.toggle()" aria-label="עגלת קניות">
+    <button
+      type="button"
+      class="cart-button"
+      (click)="cart.toggle()"
+      [attr.aria-label]="cartLabel()"
+      [attr.aria-expanded]="cart.isOpen()"
+    >
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path
           fill="currentColor"

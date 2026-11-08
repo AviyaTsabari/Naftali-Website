@@ -13,11 +13,18 @@ export class PoetryPage implements OnInit {
   private readonly catalog = inject(Catalog);
   protected readonly poems = signal<Poem[]>([]);
   protected readonly error = signal<string | null>(null);
+  protected readonly loading = signal(true);
 
   ngOnInit(): void {
     this.catalog.listPoems().subscribe({
-      next: (items) => this.poems.set(items),
-      error: (err: Error) => this.error.set(err.message),
+      next: (items) => {
+        this.poems.set(items);
+        this.loading.set(false);
+      },
+      error: (err: Error) => {
+        this.error.set(err.message);
+        this.loading.set(false);
+      },
     });
   }
 }

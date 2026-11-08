@@ -20,15 +20,36 @@ export class HomePage implements OnInit {
   protected readonly products = signal<Product[]>([]);
   protected readonly poems = signal<Poem[]>([]);
   protected readonly error = signal<string | null>(null);
+  protected readonly loading = signal(true);
+  private pending = 2;
 
   ngOnInit(): void {
     this.catalog.listProducts().subscribe({
-      next: (items) => this.products.set(items.slice(0, 2)),
-      error: (err: Error) => this.error.set(err.message),
+      next: (items) => {
+        this.products.set(items.slice(0, 2));
+        this.finishLoad();
+      },
+      error: (err: Error) => {
+        this.error.set(err.message);
+        this.finishLoad();
+      },
     });
     this.catalog.listPoems().subscribe({
-      next: (items) => this.poems.set(items.slice(0, 1)),
-      error: (err: Error) => this.error.set(err.message),
+      next: (items) => {
+        this.poems.set(items.slice(0, 1));
+        this.finishLoad();
+      },
+      error: (err: Error) => {
+        this.error.set(err.message);
+        this.finishLoad();
+      },
     });
+  }
+
+  private finishLoad(): void {
+    this.pending -= 1;
+    if (this.pending <= 0) {
+      this.loading.set(false);
+    }
   }
 }

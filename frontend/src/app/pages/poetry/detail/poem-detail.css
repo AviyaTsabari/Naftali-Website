@@ -1,17 +1,24 @@
 .back {
   display: inline-block;
-  margin-block-end: 1rem;
+  margin-block-end: 1.25rem;
   color: var(--color-walnut);
   border-block-end: 1px solid var(--color-bronze);
+  font-weight: 500;
+}
+
+section {
+  animation: rise-in 0.6s var(--ease-out);
 }
 
 h1 {
   margin: 0 0 0.5rem;
+  font-size: clamp(2.15rem, 4.2vw, 2.9rem);
 }
 
 .date {
-  margin: 0 0 1rem;
+  margin: 0 0 1.35rem;
   color: var(--color-stone);
+  letter-spacing: 0.02em;
 }
 
 .body,
@@ -21,6 +28,35 @@ h1 {
   white-space: pre-wrap;
 }
 
+.body {
+  position: relative;
+  overflow: hidden;
+  padding: 1.65rem 1.45rem;
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--glass-edge), var(--shadow-soft);
+  backdrop-filter: var(--glass-blur);
+  line-height: 1.95;
+  color: var(--color-charcoal);
+}
+
+.body::before {
+  content: "";
+  position: absolute;
+  inset-inline-end: -1rem;
+  inset-block-start: -1.5rem;
+  width: 6rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 255 255 / 50%), transparent 70%);
+  pointer-events: none;
+}
+
 .error {
   color: var(--color-stone);
+}
+
+.status {
+  margin-block-start: 1rem;
 }

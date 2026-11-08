@@ -17,11 +17,18 @@ export class ShopPage implements OnInit {
   protected readonly categories = SHOP_CATEGORIES;
   protected readonly products = signal<Product[]>([]);
   protected readonly error = signal<string | null>(null);
+  protected readonly loading = signal(true);
 
   ngOnInit(): void {
     this.catalog.listProducts().subscribe({
-      next: (items) => this.products.set(items),
-      error: (err: Error) => this.error.set(err.message),
+      next: (items) => {
+        this.products.set(items);
+        this.loading.set(false);
+      },
+      error: (err: Error) => {
+        this.error.set(err.message);
+        this.loading.set(false);
+      },
     });
   }
 }

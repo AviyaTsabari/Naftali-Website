@@ -29,6 +29,10 @@ describe('LoginPreview', () => {
     expect(fixture.nativeElement.textContent).toContain('תצוגה מקדימה — הכניסה תתאפשר בקרוב');
     expect(email.disabled).toBeTrue();
     expect(password.disabled).toBeTrue();
+    expect(email.id).toBe('login-email');
+    expect(password.id).toBe('login-password');
+    expect(fixture.nativeElement.querySelector('label[for="login-email"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('label[for="login-password"]')).toBeTruthy();
     expect(submit.disabled).toBeTrue();
   });
 

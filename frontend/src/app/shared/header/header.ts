@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Cart } from '../../services/cart';
 import { CartPreview } from '../cart-preview/cart-preview';
@@ -21,5 +21,15 @@ export class Header {
 
   closeLogin(): void {
     this.loginOpen.set(false);
+  }
+
+  cartLabel(): string {
+    return `עגלת קניות, ${this.cart.itemCount()} פריטים`;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeLogin();
+    this.cart.close();
   }
 }

@@ -217,13 +217,13 @@ Fix broken routes, console noise, RTL/responsive issues, labels, and keyboard ac
 
 ---
 
-## Later — Out of scope
+## Extensions
 
 Do not implement these during the initial foundation:
 
-- Auth and roles (customer vs administrator). Customer sign up, login, logout, saved carts, purchases, and order history. Secure administrator login. Backend-only security; no fake admin password; no frontend-only auth. When implemented, authentication and permissions must be handled securely on the backend.
-- Database-backed products, poems, customers, shopping carts, orders, and product categories.
-- Administrator dashboard: add/edit/delete products and poems, manage categories, upload product images, view and manage customer orders.
-- Payments: checkout, payment gateway integration, order confirmation, order history.
-- WhatsApp: newsletter subscriptions, automatic notifications when new poems are published, unsubscribe functionality. Future implementation must include explicit user consent, clear subscription terms, WhatsApp integration, and an unsubscribe mechanism.
-- OpenRouter AI on the backend: search products; search poems; find poems by date or writing style; find products by design or style; answer questions about products; help prepare an order. Never expose the API key to the frontend. Any AI-assisted order creation must require explicit user confirmation and use the same validated order flow as the regular shop.
+1. Auth and roles (customer vs administrator). Customer sign up, login, logout, saved carts, purchases, and order history. Secure administrator login. Backend-only security; no fake admin password; no frontend-only auth. When implemented, authentication and permissions must be handled securely on the backend.
+2. Database-backed products, poems, customers, shopping carts, orders, and product categories.
+3. Administrator dashboard: add/edit/delete products and poems, manage categories, upload product images, view and manage customer orders.
+4. Payments: checkout, payment gateway integration, order confirmation, order history.
+5. WhatsApp: newsletter subscriptions, automatic notifications when new poems are published, unsubscribe functionality. Future implementation must include explicit user consent, clear subscription terms, WhatsApp integration, and an unsubscribe mechanism.
+6. OpenRouter AI on the backend: search products; search poems; find poems by date or writing style; find products by design or style; answer questions about products; help prepare an order. Never expose the API key to the frontend. Any AI-assisted order creation must require explicit user confirmation and use the same validated order flow as the regular shop.

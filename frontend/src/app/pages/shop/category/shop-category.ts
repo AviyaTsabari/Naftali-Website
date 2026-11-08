@@ -19,18 +19,26 @@ export class ShopCategoryPage implements OnInit {
   protected readonly title = signal('חנות');
   protected readonly products = signal<Product[]>([]);
   protected readonly error = signal<string | null>(null);
+  protected readonly loading = signal(true);
 
   ngOnInit(): void {
     const category = this.route.snapshot.paramMap.get('category') ?? '';
     if (!isProductCategory(category)) {
       this.error.set('הקטגוריה לא נמצאה');
+      this.loading.set(false);
       return;
     }
 
     this.title.set(categoryLabel(category) ?? 'חנות');
     this.catalog.listProducts(category).subscribe({
-      next: (items) => this.products.set(items),
-      error: (err: Error) => this.error.set(err.message),
+      next: (items) => {
+        this.products.set(items);
+        this.loading.set(false);
+      },
+      error: (err: Error) => {
+        this.error.set(err.message);
+        this.loading.set(false);
+      },
     });
   }
 }

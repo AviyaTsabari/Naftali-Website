@@ -6,8 +6,21 @@
   --color-stone: #8a8680;
   --color-bronze: #9c7a4a;
   --color-surface: #fbf8f3;
-  --shadow-soft: 0 12px 32px rgb(44 42 40 / 12%);
-  --font-body: "Segoe UI", "Arial Hebrew", "David", Arial, sans-serif;
+  --shadow-soft: 0 18px 44px rgb(44 42 40 / 11%);
+  --shadow-lift: 0 26px 56px rgb(44 42 40 / 16%);
+  --radius-soft: 1.1rem;
+  --font-display: "Noto Serif Hebrew", "Frank Ruhl Libre", "David", serif;
+  --font-body: "Heebo", "Assistant", "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --glass-bg: linear-gradient(
+    145deg,
+    rgb(251 248 243 / 72%) 0%,
+    rgb(255 255 255 / 28%) 42%,
+    rgb(239 230 214 / 48%) 100%
+  );
+  --glass-border: 1px solid rgb(255 255 255 / 55%);
+  --glass-edge: inset 0 1px 0 rgb(255 255 255 / 65%), inset 0 -1px 0 rgb(74 50 36 / 6%);
+  --glass-blur: blur(18px) saturate(140%);
 }
 
 *,
@@ -23,10 +36,54 @@ body {
 }
 
 body {
-  background: var(--color-ivory);
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 70% 45% at 88% 8%, rgb(156 122 74 / 18%), transparent 58%),
+    radial-gradient(ellipse 55% 40% at 8% 92%, rgb(74 50 36 / 10%), transparent 55%),
+    radial-gradient(circle at 50% 35%, rgb(251 248 243 / 55%), transparent 48%),
+    linear-gradient(168deg, var(--color-ivory) 0%, var(--color-parchment) 46%, #e8dfcf 100%);
+  background-attachment: fixed;
   color: var(--color-charcoal);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+body::before {
+  inset-inline-end: -6rem;
+  inset-block-start: 12vh;
+  width: min(28rem, 58vw);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 55%), transparent 42%),
+    radial-gradient(circle at 60% 65%, rgb(156 122 74 / 22%), transparent 58%);
+  border: 1px solid rgb(255 255 255 / 35%);
+  box-shadow: var(--glass-edge), 0 30px 80px rgb(74 50 36 / 8%);
+  animation: glass-drift 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  inset-inline-start: -8rem;
+  inset-block-end: 8vh;
+  width: min(22rem, 48vw);
+  aspect-ratio: 0.75;
+  background:
+    linear-gradient(160deg, rgb(255 255 255 / 40%), rgb(239 230 214 / 18%)),
+    radial-gradient(circle at 70% 20%, rgb(156 122 74 / 18%), transparent 55%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  box-shadow: var(--glass-edge);
+  animation: glass-panel-drift 22s ease-in-out infinite alternate;
 }
 
 a {
@@ -41,6 +98,12 @@ input {
 
 button {
   cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
 }
 
 img {
@@ -51,7 +114,70 @@ img {
 h1,
 h2,
 h3 {
+  font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.28;
   color: var(--color-walnut);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 3px;
+}
+
+.status {
+  margin-block-start: 1rem;
+  color: var(--color-stone);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.9rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glass-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(-1.5rem, 1.25rem, 0) rotate(4deg);
+  }
+}
+
+@keyframes glass-panel-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-18deg);
+  }
+
+  to {
+    transform: translate3d(1.25rem, -1rem, 0) rotate(-12deg);
+  }
+}
+
+@keyframes glass-sheen {
+  from {
+    background-position: 120% 0;
+  }
+
+  to {
+    background-position: -20% 0;
+  }
 }
