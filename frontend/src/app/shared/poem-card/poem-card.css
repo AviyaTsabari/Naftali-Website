@@ -1,0 +1,24 @@
+.card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid rgb(74 50 36 / 10%);
+  box-shadow: var(--shadow-soft);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-stone);
+}
+
+.card a {
+  color: var(--color-walnut);
+  border-block-end: 1px solid var(--color-bronze);
+  justify-self: start;
+}

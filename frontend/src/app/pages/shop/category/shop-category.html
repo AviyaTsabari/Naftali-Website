@@ -1,0 +1,19 @@
+<section>
+  <h1>{{ title() }}</h1>
+  <a class="back" routerLink="/shop">חזרה לחנות</a>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else {
+    <p>המחירים והתיאורים הם נתוני דוגמה עד שיסופקו פרטים אמיתיים.</p>
+    <div class="grid">
+      @for (product of products(); track product.id) {
+        <app-product-card
+          [product]="product"
+          [inCart]="cart.has(product.id)"
+          (add)="cart.add(product)"
+        />
+      }
+    </div>
+  }
+</section>

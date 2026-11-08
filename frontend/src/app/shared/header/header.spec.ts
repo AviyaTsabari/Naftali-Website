@@ -5,6 +5,7 @@ import { Header } from './header';
 
 describe('Header', () => {
   beforeEach(async () => {
+    localStorage.clear();
     await TestBed.configureTestingModule({
       imports: [Header],
       providers: [provideRouter([]), Cart],

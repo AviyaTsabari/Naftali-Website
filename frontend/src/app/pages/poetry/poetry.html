@@ -1,4 +1,19 @@
 <section>
   <h1>שירה</h1>
-  <p>השירים יוצגו כאן בקרוב.</p>
+  <p>הטקסטים כאן הם דוגמה בלבד, ולא שירים של נפתלי.</p>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="grid">
+    @for (poem of poems(); track poem.id) {
+      <app-poem-card [poem]="poem" />
+    }
+  </div>
+</section>
+
+<section class="whatsapp" aria-label="ניוזלטר">
+  <h2>ניוזלטר בוואטסאפ — בקרוב</h2>
+  <p>ניתן יהיה להירשם לקבלת שירים חדשים. לא נאסף מספר טלפון בשלב זה.</p>
 </section>

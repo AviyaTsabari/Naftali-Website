@@ -1,0 +1,12 @@
+<section>
+  <a class="back" routerLink="/poetry">חזרה לשירה</a>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (poem(); as item) {
+    <h1>{{ item.date }}</h1>
+    <p class="body">{{ item.body }}</p>
+  }
+</section>

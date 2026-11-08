@@ -1,4 +1,9 @@
 <section>
   <h1>חנות</h1>
-  <p>היצירות יוצגו כאן בקרוב.</p>
+  <p>בחרו קטגוריה. המחירים המוצגים הם לדוגמה בלבד.</p>
+  <nav class="categories" aria-label="קטגוריות החנות">
+    @for (category of categories; track category.id) {
+      <a [routerLink]="['/shop', category.id]">{{ category.label }}</a>
+    }
+  </nav>
 </section>

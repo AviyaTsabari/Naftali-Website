@@ -18,7 +18,7 @@
 
 .hero p:last-child {
   margin: 0;
-  max-width: 38rem;
+  max-width: 42rem;
 }
 
 .overview {
@@ -38,4 +38,35 @@
 .overview a:hover {
   background: var(--color-walnut);
   color: var(--color-ivory);
+}
+
+.featured,
+.assistant {
+  margin-block-start: 2.5rem;
+}
+
+h2 {
+  margin: 0 0 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+
+.assistant {
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-bronze);
+}
+
+.assistant p,
+.error {
+  margin: 0;
+  color: var(--color-stone);
+}
+
+.error {
+  margin-block-start: 1rem;
 }

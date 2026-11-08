@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: naftali
+      POSTGRES_PASSWORD: naftali
+      POSTGRES_DB: naftali
+    ports:
+      - "5432:5432"
+    volumes:
+      - naftali_pg:/var/lib/postgresql/data
+
+volumes:
+  naftali_pg:

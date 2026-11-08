@@ -9,11 +9,15 @@
   position: fixed;
   inset-block: 0;
   inset-inline-end: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
   width: min(22rem, 100%);
   padding: 1.25rem;
   background: var(--color-surface);
   box-shadow: var(--shadow-soft);
   z-index: 21;
+  overflow: auto;
 }
 
 .panel-header {
@@ -21,7 +25,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-block-end: 1.25rem;
 }
 
 .panel-header h2 {
@@ -38,10 +41,53 @@
 }
 
 .empty,
-.soon {
-  margin: 0 0 0.75rem;
+.soon,
+.subtotal,
+.meta {
+  margin: 0;
 }
 
 .soon {
   color: var(--color-bronze);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block-end: 0.75rem;
+  border-block-end: 1px solid rgb(74 50 36 / 10%);
+}
+
+.name {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+}
+
+.qty button {
+  border: 1px solid var(--color-walnut);
+  background: transparent;
+  color: var(--color-walnut);
+  padding: 0.25rem 0.6rem;
+}
+
+.checkout {
+  margin-block-start: auto;
+  padding: 0.7rem;
+  border: 1px solid var(--color-walnut);
+  background: var(--color-parchment);
+  color: var(--color-walnut);
+}
+
+.checkout:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }

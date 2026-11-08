@@ -1,0 +1,27 @@
+h1,
+h2 {
+  margin: 0 0 0.75rem;
+}
+
+p {
+  margin: 0;
+  color: var(--color-stone);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  margin-block-start: 1.5rem;
+}
+
+.whatsapp {
+  margin-block-start: 2.5rem;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-bronze);
+}
+
+.error {
+  margin-block-start: 1rem;
+}

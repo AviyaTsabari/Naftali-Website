@@ -1,0 +1,5 @@
+<article class="card">
+  <h2>{{ poem().date }}</h2>
+  <p>{{ excerpt() }}</p>
+  <a [routerLink]="['/poetry', poem().id]">לשיר המלא</a>
+</article>

@@ -158,7 +158,7 @@ Phone and email placeholders until real details exist. Then make them clickable.
 Typed models:
 
 - **Product:** `id`, `name`, `category`, `price`, `currency`, `image`, `description`, `available`.
-- **Poem:** `id`, `date`, `title`, `body`. Card title is the date.
+- **Poem:** `id`, `date`, `title`, `body`. Each poem has a title and it apears in the start of the poem at the files "poems.txt"
 - **Cart item:** `productId`, `productName`, `price`. Use stable IDs. Do not assume a currency until Naftali confirms it.
 
 REST: typed contracts for products and poems even if served as mock or simple endpoints. Frontend consumes backend. Requests and responses follow consistent structures. Errors are handled properly.

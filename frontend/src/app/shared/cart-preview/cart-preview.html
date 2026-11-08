@@ -5,7 +5,29 @@
       <h2 id="cart-title">עגלת קניות</h2>
       <button type="button" class="close" (click)="cart.close()" aria-label="סגירה">×</button>
     </div>
-    <p class="empty">העגלה ריקה</p>
+
+    @if (cart.list().length === 0) {
+      <p class="empty">העגלה ריקה</p>
+    } @else {
+      <ul class="items">
+        @for (item of cart.list(); track item.productId) {
+          <li class="item">
+            <div>
+              <p class="name">{{ item.productName }}</p>
+              <p class="meta">כמות: 1 · מחיר לדוגמה · {{ item.price }}</p>
+            </div>
+            <div class="qty">
+              <button type="button" (click)="cart.setQuantity(item.productId, 0)" aria-label="הסרה">
+                הסרה
+              </button>
+            </div>
+          </li>
+        }
+      </ul>
+      <p class="subtotal">סכום ביניים לדוגמה · {{ cart.subtotal() }}</p>
+    }
+
     <p class="soon">התשלום יתאפשר בקרוב</p>
+    <button type="button" class="checkout" disabled>המשך לתשלום</button>
   </aside>
 }

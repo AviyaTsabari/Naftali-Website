@@ -206,7 +206,7 @@ Display poems in a responsive card layout.
 
 Each card should include:
 
-- Poem date as its title.
+- Each poem has a title.
 - Optional short excerpt.
 - A button or link to read the full poem.
 
@@ -430,8 +430,6 @@ The overall feeling should be an authentic artisan studio with a refined luxury 
 
 ---
 
-
-
 ## 11. Language and RTL — Hebrew Only
 
 **The entire website must be built in Hebrew only.**
@@ -439,25 +437,15 @@ The overall feeling should be an authentic artisan studio with a refined luxury 
 Hebrew is the exclusive language of the website, including:
 
 - Navigation menu.
-
 - Page titles and headings.
-
 - Buttons and labels.
-
 - Product names and descriptions.
-
 - Poetry pages.
-
 - Contact page.
-
 - Forms and validation messages.
-
 - Login and registration interfaces.
-
 - Shopping cart.
-
 - Error messages and notifications.
-
 - All other user-facing content.
 
 ### Right-to-Left (RTL)
@@ -467,38 +455,24 @@ The entire application must use Right-to-Left (RTL) layout.
 Requirements:
 
 - Set the HTML document language to `he`.
-
 - Set the document direction to `rtl`.
-
 - Ensure all pages and components follow RTL direction.
-
 - Navigation menus must flow from right to left.
-
 - Text alignment must be appropriate for Hebrew.
-
 - Forms and input fields must support RTL.
-
 - Icons and directional elements must be positioned correctly.
-
 - Use logical CSS properties such as `margin-inline`, `padding-inline`, and `inset-inline`.
-
 - Ensure responsive layouts work correctly in RTL.
 
 ### Important Rules
 
 - Do not create an English version of the website.
-
 - Do not add a language switcher.
-
 - Do not mix English and Hebrew in the user interface.
-
 - Internal code, variable names, API endpoints, and technical documentation may remain in English.
-
 - All visible text presented to website visitors must be in Hebrew.
 
 **Hebrew-only and RTL support are mandatory requirements from the beginning of development, not features to be added later.**
-
-
 
 ---
 

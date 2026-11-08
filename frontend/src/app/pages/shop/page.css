@@ -6,3 +6,37 @@ p {
   margin: 0;
   color: var(--color-stone);
 }
+
+.categories,
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: 1.5rem;
+}
+
+.categories {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.categories a {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-walnut);
+  color: var(--color-walnut);
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.error,
+.back {
+  margin-block-start: 1rem;
+}
+
+.back {
+  display: inline-block;
+  color: var(--color-walnut);
+  border-block-end: 1px solid var(--color-bronze);
+}
