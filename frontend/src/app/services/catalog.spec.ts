@@ -59,23 +59,39 @@ describe('Catalog', () => {
     expect(await poemPending).toEqual(samplePoem);
   });
 
-  it('maps backend failures to Hebrew errors', async () => {
+  it('falls back to static catalog when the API is unavailable', async () => {
+    const productsPending = firstValueFrom(catalog.listProducts('mezuzahs'));
+    http
+      .expectOne(`${API_URL}/products?category=mezuzahs`)
+      .flush({ detail: 'error' }, { status: 500, statusText: 'Server Error' });
+    http.expectOne('/catalog/products.json').flush([sampleProduct, { ...sampleProduct, id: 'other', category: 'furniture' }]);
+
+    expect(await productsPending).toEqual([sampleProduct]);
+
+    const poemPending = firstValueFrom(catalog.getPoem(samplePoem.id));
+    http
+      .expectOne(`${API_URL}/poems/${samplePoem.id}`)
+      .flush({ detail: 'missing' }, { status: 404, statusText: 'Not Found' });
+    http.expectOne('/catalog/poems.json').flush([samplePoem]);
+
+    expect(await poemPending).toEqual(samplePoem);
+  });
+
+  it('maps total catalog failures to Hebrew errors', async () => {
     const productsPending = firstValueFrom(catalog.listProducts());
     http
       .expectOne(`${API_URL}/products`)
       .flush({ detail: 'error' }, { status: 500, statusText: 'Server Error' });
-    await expectAsync(productsPending).toBeRejectedWithError('לא ניתן לטעון את המוצרים כרגע');
-
-    const categoryPending = firstValueFrom(catalog.listProducts('mezuzahs'));
     http
-      .expectOne(`${API_URL}/products?category=mezuzahs`)
-      .flush({ detail: 'Unknown product category' }, { status: 400, statusText: 'Bad Request' });
-    await expectAsync(categoryPending).toBeRejectedWithError('הקטגוריה לא נמצאה');
+      .expectOne('/catalog/products.json')
+      .flush({ detail: 'missing' }, { status: 404, statusText: 'Not Found' });
+    await expectAsync(productsPending).toBeRejectedWithError('לא ניתן לטעון את המוצרים כרגע');
 
     const poemPending = firstValueFrom(catalog.getPoem('missing'));
     http
       .expectOne(`${API_URL}/poems/missing`)
       .flush({ detail: 'Poem not found' }, { status: 404, statusText: 'Not Found' });
+    http.expectOne('/catalog/poems.json').flush([samplePoem]);
     await expectAsync(poemPending).toBeRejectedWithError('השיר לא נמצא');
   });
 });
