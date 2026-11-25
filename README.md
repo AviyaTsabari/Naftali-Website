@@ -1,5 +1,7 @@
 # Naftali Studio Website
 
+link: https://naftali-studio.apps.grok.bot/
+
 A Hebrew RTL website for Naftali — an artist and maker working with wood, stone, and boutique wood-and-glass creations, who also writes poetry.
 
 The site presents his work as both an online shop and an intimate artist’s studio: Home, Poetry, Shop, and Contact, with a shopping cart foundation ready for later checkout.
